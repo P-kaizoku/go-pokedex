@@ -10,13 +10,13 @@ import (
 const baseURL = "https://pokeapi.co/api/v2/"
 
 type Client struct {
-	cache      pokecache.Cache
+	cache      *pokecache.Cache
 	HttpClient http.Client
 }
 
-func NewClient(interval time.Duration) Client {
+func NewClient(cacheInterval time.Duration) Client {
 	return Client{
-		cache: pokecache.NewCache(interval),
+		cache: pokecache.NewCache(cacheInterval),
 		HttpClient: http.Client{
 			Timeout: time.Minute,
 		}}

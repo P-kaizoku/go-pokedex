@@ -1,6 +1,8 @@
 package pokecache
 
-import "time"
+import (
+	"time"
+)
 
 type Cache struct {
 	cache map[string]cacheEntry
@@ -11,8 +13,8 @@ type cacheEntry struct {
 	createdAt time.Time
 }
 
-func NewCache(interval time.Duration) Cache {
-	c := Cache{
+func NewCache(interval time.Duration) *Cache {
+	c := &Cache{
 		cache: make(map[string]cacheEntry),
 	}
 	go c.reapLoop(interval)
